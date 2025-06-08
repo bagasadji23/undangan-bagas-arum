@@ -1,0 +1,568 @@
+html, body {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Font default untuk seluruh halaman */
+body {
+  background: url('Batik1.png') no-repeat center center fixed;
+  margin: 0;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--krem-muda);
+  color: var(--coklat-tua);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* layer lembut di atas batik */
+  z-index: -1;
+}
+
+body.noscroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.section {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85); /* transparan putih */
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.section p {
+  margin-bottom: 1.2em;
+}
+
+/* Font heading: judul besar */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--coklat-tua);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p, a, button, .gift-info, .timeline p {
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* Sampul Undangan */
+.sampul {
+  width: 100%;
+  overflow-x: hidden;
+  height: 100vh;
+  background: linear-gradient(rgba(255,248,240,0.95), rgba(255,248,240,0.95)), url('gunungan.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.sampul::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.sampul-content {
+  background-color: rgba(255,255,255,0.85);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+  font-family: 'Playfair Display', serif;
+}
+
+.sampul h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin: 0;
+  margin-bottom: 10px;
+  color: var(--coklat-tua);
+}
+
+.sampul p {
+  font-size: 1.2rem;
+  margin: 10px 0 20px;
+  color: var(--coklat-muda);
+  margin-bottom: 20px;
+}
+
+.nama-tamu {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: var(--coklat-tua);
+  font-weight: 500;
+}
+
+.sampul-content p {
+  font-size: 1.2rem;
+  color: var(--coklat-muda);
+}
+
+.sampul-content button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #a47148;
+  color: white;
+  font-family: 'Libre Baskerville', serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sampul-content button:hover {
+  background-color: #7c5134;
+}
+
+.beranda {
+  background-color: #f3e5f5;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--coklat-muda);
+  background-color: #fceee3;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mempelai-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.mempelai-item {
+  flex: 1 1 220px;
+  max-width: 300px;
+}
+
+.foto-mempelai {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Galeri */
+.galeri-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  max-width: 250px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.galeri-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.2s ease;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.galeri-item:hover img {
+  transform: scale(1.03);
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.95rem;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.galeri-item:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galeri-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.galeri-container img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+
+.galeri-container img:hover {
+  transform: scale(1.03);
+}
+
+/* Countdown */
+.countdown {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #5c4033;
+  font-weight: bold;
+  background-color: #fff4e6;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.subheading {
+  font-size: 1.5rem;
+  color: var(--coklat-muda);
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* RSVP */
+#rsvpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+#rsvpForm input,
+#rsvpForm select {
+  padding: 10px 14px;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#rsvpForm button {
+  background-color: var(--coklat-muda);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  max-width: 360px;
+  width: 100%;
+}
+
+#rsvpForm button:hover {
+  background-color: #5d4037;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  #audio-toggle {
+    bottom: 80px;
+    right: 10px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+
+  .sampul h1 {
+    font-size: 2rem; /* Ubah ukuran untuk mobile */
+  }
+  .sampul p {
+    font-size: 1rem; /* Sesuaikan teks tambahan */
+  }
+
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  body { font-size: 15.5px; }
+
+  #beranda {
+    padding-top: 120px;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+
+  .countdown {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+  }
+
+  .galeri-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .galeri-container img {
+    max-width: 90%;
+  }
+
+  #rsvpForm input,
+  #rsvpForm select {
+    width: 90%;
+  }
+}
+
+/* Love Story Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 3px solid var(--coklat-muda);
+  padding-left: 20px;
+  text-align: left;
+}
+
+.timeline .event {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 10px;
+}
+
+.timeline .event::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  background-color: #8d6e63;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--coklat-muda);
+}
+
+.timeline h3 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  color: #5d4037;
+  padding-left: 10px;
+}
+
+.timeline p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--coklat-tua);
+  line-height: 1.6;
+}
+
+#audio-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--coklat-muda);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+#audio-toggle:hover {
+  background-color: #5d4037;
+}
+
+.gift-card {
+  display: flex;
+  align-items: center;
+  background-color: #fceee3;
+  border-left: 4px solid var(--coklat-muda);
+  margin: 20px auto;
+  margin-bottom: 24px;
+  padding: 15px 20px;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  gap: 16px;
+  position: relative;
+  text-align: center;
+}
+
+.gift-card + .gift-card {
+  border-top: 1px solid #d7ccc8; /* Divider halus antar kartu */
+  padding-top: 30px;
+  margin-top: 40px;
+}
+
+.bank-logo {
+  width: 48px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.gift-info {
+  margin-bottom: 8px; /* Jarak antara nama dan info rekening */
+  flex: 1;
+  padding-right: 8px;
+}
+
+.gift-info p {
+  line-height: 1.6;   /* Jarak antar baris info rekening */
+  margin-bottom: 10px; /* Jarak antar blok teks */
+}
+
+.gift-card h3 {
+  margin: 0 0 5px;
+  color: var(--coklat-tua);
+}
+
+.gift-card p {
+  margin: 0;
+  color: #5d4037;
+}
+
+.gift-kado {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gift-kado .gift-info {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.gift-kado .gift-button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background-color: var(--coklat-muda);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.gift-kado .gift-button:hover {
+  background-color: #5d4037;
+}
+
+.maps-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background-color: var(--coklat-muda);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.maps-button:hover {
+  background-color: #5d4037;
+}
+
+.maps-button, .gift-button {
+  transition: transform 0.2s ease;
+}
+
+.maps-button:hover, .gift-button:hover {
+  transform: scale(1.05); /* Efek hover lebih menarik */
+}
+
+footer {
+  padding: 20px 20px;
+  text-align: center;
+  background-color: var(--coklat-muda);
+  color: white;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fffaf3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--coklat-muda);
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+:root {
+  --coklat-tua: #4e342e;
+  --coklat-muda: #6d4c41;
+  --krem-muda: #fffdf7;
+}

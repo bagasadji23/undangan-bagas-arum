@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan Bagas & Arum</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="loading.css" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v23/..." as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="noscroll">
+  
+  <div id="loading-screen">
+    <div class="loading-text">Memuat undangan...</div>
+  </div>
+  
+  <!-- Audio Musik -->
+<audio id="backgroundMusic" src="Langgam.mp3"></audio>
+
+  <!-- Sampul Awal -->
+  <section id="sampul" class="sampul">
+    <div class="sampul-content">
+      <p class="nama-tamu">Undangan untuk <span id="namaTamu">Tamu</span></p>
+      <h1>Bagas & Arum</h1>
+      <p>Minggu, 17 Agustus 2025</p>
+      <button onclick="scrollToContent()">Buka Undangan</button>
+    </div>
+  </section>
+
+<main id="isi-undangan" style="display: none;">
+  <section id="beranda" class="section">
+    <h2 class="quote">Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir</h2>
+    <p>Ar-Rum · Ayat 21</p>
+  </section>
+
+  <section id="mempelai" class="section">
+    <div class="mempelai-container">
+      <div class="mempelai-item">
+      <img src="arum.jpg" alt="Arum" class="foto-mempelai" />
+      <h3>Wahyu Arum Nurjanah S.H.</h3>
+      <p>Putri pertama dari<br>Bapak Kemis & Ibu Suyati</p>
+    </div>
+    
+    <div class="mempelai-item">
+      <img src="bagas.jpg" alt="Bagas" class="foto-mempelai" />
+      <h3>Bagas Adji Dewantoro S.T.</h3>
+      <p>Putra pertama dari<br>Bapak Imam Cahyono & Ibu Suparni</p>
+    </div>
+  </div>
+</section>
+
+    <section id="lovestory" class="section">
+      <h2>Love Story</h2>
+      <div class="timeline">
+        <div class="event"><h3>2018</h3><p>Pertemuan pertama saat orientasi mahasiswa baru di kampus</p></div>
+        <div class="event"><h3>2019</h3><p>Hubungan kami makin dekat dan penuh cerita seru</p></div>
+        <div class="event"><h3>2021</h3><p>Resmi menjalin hubungan yang lebih serius</p></div>
+        <div class="event"><h3>2024</h3><p>Kami bertunangan dengan restu keluarga</p></div>
+        <div class="event"><h3>2025</h3><p>Hari pernikahan kami yang bahagia dan diberkahi</p></div>
+      </div>
+    </section>
+</main>
+
+<!-- Tombol audio -->
+<button id="audio-toggle" onclick="toggleAudio(this)">🔊</button>
+
+  <section id="acara" class="section">
+    <h2>Detail Acara</h2>
+    <h3>Akad Nikah</h3>
+    <p>Minggu, 17 Agustus 2025<br>Pukul: 08.00 - 09.00 WIB<br>Kediaman mempelai wanita<br>Jl. Teratai Raya, Tirtajaya, Sukmajaya, Depok</p>
+    <h3>Resepsi</h3>
+    <p>Minggu, 17 Agustus 2025<br>Pukul: 11.00 - Selesai<br>Kediaman mempelai wanita</p>
+  </section>
+
+  <section id="lokasi" class="section">
+    <h2>Lokasi Acara</h2>
+    <p>Jl. Teratai Raya, Tirtajaya, Kec. Sukmajaya, Kota Depok, Jawa Barat</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8693932072615!2d106.8195664!3d-6.4108199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb8f844de99d%3A0xa4465d5c4b9b0979!2sWarung%20arum%2Fpak%20kemis!5e0!3m2!1sid!2sid!4v1746246448794!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <a href="https://www.google.com/maps?q=-6.4108199,106.8195664" target="_blank" class="maps-button">
+      📍 Buka di Google Maps
+    </a>
+  </section>
+
+  <section id="galeri" class="section">
+    <h2>Galeri</h2>
+    <div class="galeri-container">
+      <div class="galeri-item">
+      <img src="Prewed1.png" alt="Foto Prewed 1" />
+      <div class="caption">Momen pertunangan di Yogyakarta</div>
+    </div>
+    <div class="galeri-item">
+      <img src="Prewed2.png" alt="Foto Prewed 2" />
+      <div class="caption">Kenangan di antara senja</div>
+    </div>
+    <div class="galeri-item">
+      <img src="prewed3.jpg" alt="Foto Prewed 3" />
+      <div class="caption">Bahagia bersama, selamanya</div>
+    </div>
+  </div>
+  </section>
+  
+  <section id="countdown-section" class="section">
+    <h2 class="subheading">🎉 Menuju Hari Bahagia</h2>
+    <div id="countdown" class="countdown"></div>
+  </section>
+
+  <section id="rsvp" class="section">
+    <h2>Konfirmasi Kehadiran</h2>
+    <p>Mohon konfirmasi kehadiran Anda dengan mengisi form berikut:</p>
+    <form id="rsvpForm">
+        <input type="text" id="nama" placeholder="Nama Anda" required />
+        <select id="kehadiran" required>
+            <option value="">-- Konfirmasi --</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+        </select>
+        <button type="submit">Kirim via WhatsApp</button>
+  </form>
+  </section>
+
+ <section id="gift" class="section">
+  <h2>Wedding Gift</h2>
+  <p>Doa restu Anda merupakan hadiah terindah. Namun jika ingin memberikan tanda kasih, berikut informasi rekening kami:</p>
+
+  <div class="gift-card">
+    <img src="bca.jpg" alt="Logo BCA" class="bank-logo" />
+    <div class="gift-info">
+      <h3>Wahyu Arum Nurjanah</h3>
+      <p>Bank BCA<br>No. Rekening: <strong>1234567890</strong><br>a.n. Wahyu Arum Nurjanah</p>
+    </div>
+  </div>
+  
+  <div class="gift-card">
+    <img src="mandiri.jpg" alt="Logo Mandiri" class="bank-logo" />
+    <div class="gift-info">
+      <h3>Bagas Adji Dewantoro</h3>
+      <p>Bank Mandiri<br>No. Rekening: <strong>9876543210</strong><br>a.n. Bagas Adji Dewantoro</p>
+    </div>
+  </div>
+
+<div class="gift-card gift-kado"> 
+  <div class="gift-info">
+    <h3>Kirim Kado</h3>
+    <p>Anda dapat mengirim kado secara langsung ke alamat kami. Terima kasih atas doa dan restunya 🙏</p>
+    <a href="https://maps.app.goo.gl/jP1cL53cHWJxsejj8" target="_blank" class="gift-button">📦 Kirim Kado</a>
+  </div>
+</div>
+</section>
+
+<section id="penutup" class="section">
+  <h2>Ucapan & Doa</h2>
+  <p>Dengan segala kerendahan hati, kami memohon doa restu dari Bapak/Ibu/Saudara/i agar pernikahan kami diberkahi oleh Allah SWT, dilimpahi cinta, kasih, dan kebahagiaan hingga akhir hayat</p>
+  <p class="quote" style="margin-top: 20px;">
+    "Semoga menjadi keluarga yang sakinah, mawaddah, warahmah"
+  </p>
+</section>
+<footer>
+  <p>Terima kasih atas doa dan restunya</p>
+  <p>Bagas Adji Dewantoro S.T. & Wahyu Arum Nurjanah S.H.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>
