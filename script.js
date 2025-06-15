@@ -80,3 +80,35 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+function copyRekening(id) {
+  const rekening = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(rekening).then(() => {
+    showToast("Nomor rekening berhasil disalin!");
+  }).catch(err => {
+    showToast("Gagal menyalin nomor.");
+  });
+}
+
+function showToast(pesan) {
+  const toast = document.getElementById("toast");
+  toast.textContent = pesan;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // Toast hilang dalam 3 detik
+}
+
+function toggleGift() {
+  const giftSection = document.getElementById("gift-content");
+  const button = document.querySelector(".gift-toggle-button");
+
+  if (giftSection.style.display === "none" || giftSection.style.display === "") {
+    giftSection.style.display = "block";
+    button.textContent = "💝 Sembunyikan Info Wedding Gift";
+  } else {
+    giftSection.style.display = "none";
+    button.textContent = "💝 Lihat Info Wedding Gift";
+  }
+}
