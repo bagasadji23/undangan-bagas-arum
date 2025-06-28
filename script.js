@@ -10,6 +10,8 @@ function scrollToContent() {
   }
   document.getElementById("sampul").style.display = "none";
   document.getElementById("isi-undangan").style.display = "block";
+      // Tampilkan tombol audio
+  document.getElementById("audio-toggle").style.display = "block";
   document.getElementById("beranda").scrollIntoView({ behavior: "smooth" });
   document.body.classList.remove("noscroll"); // Aktifkan scroll lagi
   audio.play().catch((e) => console.log("Autoplay ditolak:", e));
@@ -19,14 +21,15 @@ window.addEventListener("load", () => {
   document.getElementById("loading-screen").style.display = "none";
 });
 
-
 function toggleAudio(btn) {
   if (audio.paused) {
     audio.play();
     btn.innerHTML = "🔊";
+    btn.setAttribute("aria-label", "Musik aktif");
   } else {
     audio.pause();
     btn.innerHTML = "🔇";
+    btn.setAttribute("aria-label", "Musik nonaktif");
   }
 }
 

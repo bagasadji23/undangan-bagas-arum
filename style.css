@@ -1,3 +1,4 @@
+/* === Reset & Global Layout === */
 html, body {
   width: 100%;
 }
@@ -16,6 +17,8 @@ body {
   background-color: var(--krem-muda);
   color: var(--coklat-tua);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -40,7 +43,7 @@ body.noscroll {
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(4px); /* opsional, efek kaca buram */
   border-radius: 16px;
-  box-shadow: 0 4 16px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   margin-bottom: 40px;
 }
 
@@ -56,6 +59,7 @@ h1, h2, h3 {
   margin-bottom: 10px;
 }
 
+/* === Typography: Judul dan Heading === */
 h1 {
   font-size: 2.5rem;
 }
@@ -72,15 +76,7 @@ p, a, button, .gift-info, .timeline p {
   font-family: 'Libre Baskerville', serif;
 }
 
-@media (max-width: 480px) {
-  .quote {
-    font-size: 0.95rem;  /* Lebih kecil dan nyaman di layar HP */
-    padding: 8px 14px;
-    line-height: 1.5;
-  }
-}
-
-/* Sampul Undangan */
+/* === Sampul Undangan === */
 .sampul {
   width: 100%;
   overflow-x: hidden;
@@ -146,7 +142,8 @@ p, a, button, .gift-info, .timeline p {
   font-size: 1rem;
   border: none;
   border-radius: 30px;
-  background-color: #a47148;
+  background-color: var(--coklat-tua);
+  /*background-color: #a47148;*/
   color: white;
   font-family: 'Libre Baskerville', serif;
   cursor: pointer;
@@ -181,6 +178,8 @@ p, a, button, .gift-info, .timeline p {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+  transform: translateY(40px);
+
 }
 
 .mempelai-item h3 {
@@ -191,19 +190,7 @@ p, a, button, .gift-info, .timeline p {
   color: var(--coklat-tua);
 }
 
-@media (max-width: 480px) {
-  .mempelai-item h3 {
-    font-size: 1.15rem;
-    margin-top: 6px;
-  }
-
-  .mempelai-item p {
-    font-size: 0.95rem;
-    margin-top: 0;
-    color: #5d4037;
-  }
-}
-
+/* === Section Mempelai === */
 .mempelai-container {
   display: flex;
   flex-wrap: wrap;
@@ -236,13 +223,6 @@ p, a, button, .gift-info, .timeline p {
   width: 100%;
 }
 
-/* Tampilkan hanya di mobile */
-@media (max-width: 600px) {
-  .and-symbol {
-    display: block;
-  }
-}
-
 /* Galeri */
 .galeri-item {
   position: relative;
@@ -257,7 +237,7 @@ p, a, button, .gift-info, .timeline p {
 .galeri-item img {
   width: 100%;
   display: block;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
   max-height: 320px;
   object-fit: cover;
 }
@@ -277,7 +257,7 @@ p, a, button, .gift-info, .timeline p {
   padding: 10px;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-align: center;
 }
 
@@ -286,6 +266,7 @@ p, a, button, .gift-info, .timeline p {
   transform: translateY(0);
 }
 
+/* === Galeri Foto === */
 .galeri-container {
   display: flex;
   flex-wrap: wrap;
@@ -299,7 +280,7 @@ p, a, button, .gift-info, .timeline p {
   max-width: 250px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .galeri-container img:hover {
@@ -307,6 +288,7 @@ p, a, button, .gift-info, .timeline p {
 }
 
 /* Countdown */
+/* === Countdown Menuju Hari Bahagia === */
 .countdown {
   font-size: 20px;
   margin-top: 20px;
@@ -327,6 +309,7 @@ p, a, button, .gift-info, .timeline p {
 }
 
 /* RSVP */
+/* === RSVP Section === */
 #rsvpForm {
   display: flex;
   flex-direction: column;
@@ -357,62 +340,15 @@ p, a, button, .gift-info, .timeline p {
   transition: background 0.3s ease;
   max-width: 360px;
   width: 100%;
+  letter-spacing: 0.3px;
 }
 
 #rsvpForm button:hover {
   background-color: #5d4037;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-  #audio-toggle {
-    bottom: 80px;
-    right: 10px;
-    font-size: 0.85rem;
-    padding: 4px 8px;
-  }
-
-  .sampul h1 {
-    font-size: 2rem; /* Ubah ukuran untuk mobile */
-  }
-  .sampul p {
-    font-size: 1rem; /* Sesuaikan teks tambahan */
-  }
-
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.3rem; }
-  body { font-size: 15.5px; }
-
-  #beranda {
-    padding-top: 120px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  .countdown {
-    font-size: 1.1rem;
-    padding: 10px 16px;
-  }
-
-  .galeri-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .galeri-container img {
-    max-width: 90%;
-  }
-
-  #rsvpForm input,
-  #rsvpForm select {
-    width: 90%;
-  }
-}
-
 /* Love Story Timeline */
+/* === Love Story Timeline === */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -457,8 +393,8 @@ p, a, button, .gift-info, .timeline p {
 
 #audio-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 60px;
+  right: 30px;
   background-color: var(--coklat-muda);
   color: white;
   border: none;
@@ -467,27 +403,36 @@ p, a, button, .gift-info, .timeline p {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 999;
+  z-index: 1000;
+  letter-spacing: 0.3px;
 }
 
 #audio-toggle:hover {
   background-color: #5d4037;
 }
 
+/* === Wedding Gift Section === */
 .gift-card {
   display: flex;
   align-items: center;
   background-color: #fceee3;
   border-left: 4px solid var(--coklat-muda);
   margin: 20px auto;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   padding: 15px 20px;
   max-width: 500px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   gap: 16px;
   position: relative;
   text-align: center;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
 .gift-card + .gift-card {
@@ -497,7 +442,7 @@ p, a, button, .gift-info, .timeline p {
 }
 
 .bank-logo {
-  width: 48px;
+  width: 70px;
   height: auto;
   margin-bottom: 8px;
 }
@@ -521,35 +466,6 @@ p, a, button, .gift-info, .timeline p {
 .gift-card p {
   margin: 0;
   color: #5d4037;
-}
-
-.gift-kado {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.gift-kado .gift-info {
-  text-align: center;
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-.gift-kado .gift-button {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 24px;
-  background-color: var(--coklat-muda);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.gift-kado .gift-button:hover {
-  background-color: #5d4037;
 }
 
 .gift-toggle-button {
@@ -583,7 +499,8 @@ p, a, button, .gift-info, .timeline p {
   font-weight: 500;
   border-radius: 8px;
   font-size: 0.95rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  letter-spacing: 0.3px;
 }
 
 .gift-button:hover {
@@ -624,21 +541,14 @@ p, a, button, .gift-info, .timeline p {
   text-decoration: none;
   font-weight: 500;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .maps-button:hover {
   background-color: #5d4037;
 }
 
-.maps-button, .gift-button {
-  transition: transform 0.2s ease;
-}
-
-.maps-button:hover, .gift-button:hover {
-  transform: scale(1.05); /* Efek hover lebih menarik */
-}
-
+/* === Footer === */
 footer {
   padding: 20px 20px;
   text-align: center;
@@ -652,12 +562,14 @@ footer {
 }
 
 .nama-footer {
-  margin-top: 0;
-  line-height: 1.5;
   font-size: 1rem;
+  line-height: 1.5;
+  margin: 4px 0;
+  text-align: center;
+  color: var(--krem-muda);
 }
 
-
+/* === Loading Screen === */
 #loading-screen {
   position: fixed;
   top: 0;
@@ -689,3 +601,110 @@ footer {
   --krem-muda: #fffdf7;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 0.9em;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+/* === Responsif untuk Mobile (≤ 480px) === */
+@media (max-width: 480px) {
+    p {
+    font-size: 0.95rem;
+  }
+
+  #audio-toggle {
+    bottom: 60px;
+    right: 3 30px;
+    font-size: 1 rem;
+    padding: 10px 14px;
+  }
+
+  .sampul h1 {
+    font-size: 2rem; /* Ubah ukuran untuk mobile */
+  }
+  .sampul p {
+    font-size: 1rem; /* Sesuaikan teks tambahan */
+  }
+
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  body { font-size: 15.5px; }
+
+  #beranda {
+    padding-top: 120px;
+  }
+
+  .section {
+    padding: 40px 12px;
+  }
+
+  .gift-card {
+    padding: 16px 14px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .quote {
+    font-size: 0.95rem;  /* Lebih kecil dan nyaman di layar HP */
+    padding: 8px 14px;
+    line-height: 1.5;
+  }
+
+  .mempelai-item h3 {
+    font-size: 1.15rem;
+    margin-top: 6px;
+  }
+
+  .mempelai-item p {
+    font-size: 0.95rem;
+    margin-top: 0;
+    color: #5d4037;
+  }
+
+  .and-symbol {
+    display: block;
+  }
+
+  .countdown {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+  }
+
+  .galeri-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .galeri-container img {
+    max-width: 90%;
+  }
+
+  #rsvpForm input,
+  #rsvpForm select {
+    width: 90%;
+  }
+
+  .gift-button,
+  .maps-button,
+  .rsvp-button {
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}
