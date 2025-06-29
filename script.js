@@ -116,3 +116,18 @@ function toggleGift() {
     button.textContent = "💝 Lihat Info Wedding Gift";
   }
 }
+
+// Ambil parameter dari URL
+function getNamaDariURL() {
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("to");
+  if (nama) {
+    const namaElemen = document.getElementById("nama-tamu");
+    if (namaElemen) {
+      namaElemen.textContent = `Undangan untuk ${decodeURIComponent(nama)}`;
+    }
+  }
+}
+
+// Jalankan setelah halaman dimuat
+window.addEventListener("DOMContentLoaded", getNamaDariURL);
