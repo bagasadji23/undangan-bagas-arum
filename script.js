@@ -9,7 +9,8 @@ function scrollToContent() {
     loadingScreen.style.display = "none";
   }
   document.getElementById("sampul").style.display = "none";
-  document.getElementById("isi-undangan").style.display = "block";
+  const isi = document.getElementById("isi-undangan");
+  isi.style.display = "block";  
       // Tampilkan tombol audio
   document.getElementById("audio-toggle").style.display = "block";
   document.getElementById("beranda").scrollIntoView({ behavior: "smooth" });
