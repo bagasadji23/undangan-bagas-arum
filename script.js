@@ -3,19 +3,26 @@ audio.loop = true;
 audio.volume = 0.7;
 
 function scrollToContent() {
-    // Hilangkan loading
   const loadingScreen = document.getElementById("loading-screen");
-  if (loadingScreen) {
-    loadingScreen.style.display = "none";
-  }
-  document.getElementById("sampul").style.display = "none";
+  if (loadingScreen) loadingScreen.style.display = "none";
+
+  const sampul = document.getElementById("sampul");
   const isi = document.getElementById("isi-undangan");
-  isi.style.display = "block";  
-      // Tampilkan tombol audio
-  document.getElementById("audio-toggle").style.display = "block";
-  document.getElementById("beranda").scrollIntoView({ behavior: "smooth" });
-  document.body.classList.remove("noscroll"); // Aktifkan scroll lagi
-  audio.play().catch((e) => console.log("Autoplay ditolak:", e));
+
+  // Tambahkan animasi slide up
+  sampul.classList.add("sampul-slide-up");
+
+  // Setelah animasi selesai, baru munculkan isi
+  setTimeout(() => {
+    sampul.style.display = "none";
+    isi.style.display = "block";
+    isi.classList.add("fadeIn");
+
+    document.getElementById("audio-toggle").style.display = "block";
+    document.getElementById("beranda").scrollIntoView({ behavior: "smooth" });
+    document.body.classList.remove("noscroll");
+    audio.play().catch(e => console.log("Autoplay ditolak:", e));
+  }, 800); // waktu sesuai durasi animasi
 }
 
 window.addEventListener("load", () => {
@@ -121,11 +128,9 @@ function toggleGift() {
 function getNamaDariURL() {
   const params = new URLSearchParams(window.location.search);
   const nama = params.get("to");
-  if (nama) {
-    const namaElemen = document.getElementById("nama-tamu");
-    if (namaElemen) {
-      namaElemen.textContent = `Undangan untuk ${decodeURIComponent(nama)}`;
-    }
+  const spanNama = document.getElementById("namaTamu");
+  if (spanNama) {
+    spanNama.textContent = nama ? decodeURIComponent(nama) : "Tamu";
   }
 }
 

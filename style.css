@@ -189,6 +189,25 @@ p, a, button, .gift-info, .timeline p {
   }
 }
 
+/* === Animasi Sampul Tarik ke Atas === */
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+.sampul-slide-up {
+  animation: slideUp 0.8s ease-in-out forwards;
+  will-change: transform, opacity;
+  position: relative;
+  z-index: 9999;
+}
+
 .mempelai-item h3 {
   margin-top: 8px; /* default mungkin 16px atau 20px */
   margin-bottom: 6px;
