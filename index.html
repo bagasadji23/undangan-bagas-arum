@@ -55,7 +55,7 @@
 </main>
 
 <!-- Tombol audio -->
-<button id="audio-toggle" onclick="toggleAudio(this)" style="display: none;">🔊</button>
+<button id="audio-toggle" onclick="toggleAudio(this)" style="display: none;" aria-label="Putar / Hentikan Musik">🔊</button>
 
   <section id="acara" class="section">
     <h2>Detail Acara</h2>
@@ -98,20 +98,20 @@
     <h2 class="subheading">💍✨ Menuju Hari Bahagia</h2>
     <div id="countdown" class="countdown"></div>
   </section>
+  
+  <section class="section" id="ucapan">
+    <h2>Ucapan & Doa</h2>
+    <form id="ucapanForm">
+      <input type="text" id="nama" placeholder="Nama Anda" required />
+      <textarea id="pesan" placeholder="Tulis ucapan & doa..." rows="4" required></textarea>
+      <button type="submit">Kirim Ucapan</button>
+    </form>
+    
+    <div id="ucapanList" class="ucapan-list">
+      <!-- Ucapan ditampilkan di sini -->
+      </div>
+    </section>
 
-  <section id="rsvp" class="section">
-    <h2>Konfirmasi Kehadiran</h2>
-    <p>Mohon konfirmasi kehadiran Anda dengan mengisi form berikut:</p>
-    <form id="rsvpForm">
-        <input type="text" id="nama" placeholder="Nama Anda" required />
-        <select id="kehadiran" required>
-            <option value="">-- Konfirmasi --</option>
-            <option value="Hadir">Hadir</option>
-            <option value="Tidak Hadir">Tidak Hadir</option>
-        </select>
-        <button type="submit">Kirim via WhatsApp</button>
-  </form>
-  </section>
 
 <section id="gift" class="section">
   <h2>Wedding Gift</h2>
@@ -140,7 +140,7 @@
   </div>
 
 <div class="gift-card">
-  <img src="kado.png" alt="Logo Kado" class="bank-logo" />
+  <img src="kado.png" alt="Kado" class="logo-kado">
   <div class="gift-info">
     <h3>Kirim Kado</h3>
     <p>Anda dapat mengirimkan kado secara langsung ke alamat kami. Terima kasih atas doa dan restunya 🙏</p>

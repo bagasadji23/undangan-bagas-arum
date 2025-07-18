@@ -62,35 +62,38 @@ const x = setInterval(function () {
   }
 }, 1000);
 
-// RSVP ke WhatsApp
-document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+// Ucapan pengunjung
+document.getElementById("ucapanForm").addEventListener("submit", function (e) {
   e.preventDefault();
   const nama = document.getElementById("nama").value.trim();
-  const kehadiran = document.getElementById("kehadiran").value;
-  const nomorWA = "6281299427944"; // Ganti dengan nomor WA kamu
-  const pesan = `Halo, saya *${nama}* ingin mengkonfirmasi bahwa saya *${kehadiran}* menghadiri acara pernikahan Bagas & Arum.`;
-  const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
-  window.open(url, "_blank");
+  const pesan = document.getElementById("pesan").value.trim();
+
+  if (!nama || !pesan) return;
+
+  const ucapanList = document.getElementById("ucapanList");
+
+  // Tambahkan elemen baru ke daftar ucapan
+  const ucapan = document.createElement("div");
+  ucapan.className = "ucapan-item";
+  ucapan.innerHTML = `<strong>${nama}:</strong> <p>${pesan}</p>`;
+
+  ucapanList.prepend(ucapan); // Tambahkan ke atas
+  this.reset(); // Bersihkan form
+
+  showToast("Ucapan kamu sudah ditambahkan!");
 });
 
-// Ambil nama dari URL path
-const path = window.location.pathname.split("/").filter(Boolean);
-let namaTamu = "";
-const last = path[path.length - 1];
-if (last && !last.endsWith(".html")) {
-  namaTamu = decodeURIComponent(last);
-}
-const spanNama = document.getElementById("namaTamu");
-if (spanNama) {
-  spanNama.textContent = namaTamu || "Tamu";
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('fadeIn');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fadeIn");
+      observer.unobserve(entry.target); // hanya sekali
+    }
   });
 });
-document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+// Observasi semua .event
+document.querySelectorAll('.event').forEach((el) => observer.observe(el));
 
 function copyRekening(id) {
   const rekening = document.getElementById(id).innerText;
@@ -136,3 +139,20 @@ function getNamaDariURL() {
 
 // Jalankan setelah halaman dimuat
 window.addEventListener("DOMContentLoaded", getNamaDariURL);
+
+document.getElementById('form-ucapan').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nama = document.getElementById('namaUcapan').value;
+  const ucapan = document.getElementById('pesanUcapan').value;
+
+  fetch('https://script.google.com/macros/s/AKfycbybDIVpdvwxz4uTUGS2X1mBtlGEQUAoJbPEnJwdqvX8Bm-QST1y-_FQU76DcaJuhwjc/exec', {
+    method: 'POST',
+    body: JSON.stringify({ nama, ucapan }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert('Ucapan berhasil dikirim!');
+    document.getElementById('form-ucapan').reset();
+  });
+});

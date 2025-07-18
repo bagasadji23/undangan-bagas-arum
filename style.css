@@ -9,7 +9,10 @@ html {
 
 /* Font default untuk seluruh halaman */
 body {
-  background: url('Batik1.png') no-repeat center center fixed;
+  background-image: url('Batik1.png');
+  background-repeat: repeat;         /* Pola berulang */
+  background-size: auto;
+  background-attachment: scroll;
   margin: 0;
   font-family: 'Libre Baskerville', serif;
   font-size: 16px;
@@ -19,6 +22,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
 }
 
 body::before {
@@ -110,7 +117,6 @@ p, a, button, .gift-info, .timeline p {
 }
 
 .sampul h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 3rem;
   margin: 0;
   margin-bottom: 10px;
@@ -172,20 +178,19 @@ p, a, button, .gift-info, .timeline p {
 }
 
 .fadeIn {
-  animation: fadeIn 1s ease both;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
 }
 
 /* === Animasi Buka Undangan === */
 @keyframes fadeIn {
-  from 
-  { 
-    opacity: 0; 
-    transform: translateY(30px); 
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  to 
-  { 
-    opacity: 1; 
-    transform: translateY(0); 
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -210,7 +215,7 @@ p, a, button, .gift-info, .timeline p {
 
 .mempelai-item h3 {
   margin-top: 8px; /* default mungkin 16px atau 20px */
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--coklat-tua);
@@ -334,43 +339,89 @@ p, a, button, .gift-info, .timeline p {
   font-family: 'Playfair Display', serif;
 }
 
-/* RSVP */
-/* === RSVP Section === */
-#rsvpForm {
+/* === UCAPAN & DOA === */
+#ucapan {
+  padding: 60px 20px;
+  background-color: #fdfaf5; /* Latar belakang lembut */
+  font-family: 'Libre Baskerville', serif;
+  color: #4e342e;
+}
+
+#ucapan h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #4e342e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#ucapanForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  margin-top: 20px;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
-#rsvpForm input,
-#rsvpForm select {
-  padding: 10px 14px;
-  width: 100%;
-  max-width: 360px;
-  border: 1px solid #ccc;
+#ucapanForm input,
+#ucapanForm textarea {
+  padding: 14px;
   border-radius: 8px;
+  font-family: 'Libre Baskerville', serif;
   font-size: 1rem;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #4e342e;
 }
 
-#rsvpForm button {
-  background-color: var(--coklat-muda);
-  color: white;
+.ucapan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#ucapanForm button {
+  background-color: #4e342e;
+  color: #fff8f1;
   border: none;
-  padding: 10px 24px;
+  padding: 12px;
+  font-family: 'Playfair Display', serif;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  max-width: 360px;
-  width: 100%;
-  letter-spacing: 0.3px;
+  transition: transform 0.3s ease;
 }
 
-#rsvpForm button:hover {
-  background-color: #5d4037;
+#ucapanForm button:hover {
+  transform: scale(1.05);
+}
+
+.ucapan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ucapan-item {
+  background: #fff8f1;
+  padding: 14px 18px;
+  border-left: 5px solid #4e342e;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.ucapan-item strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #4e342e;
+  display: block;
+  margin-bottom: 4px;
 }
 
 /* Love Story Timeline */
@@ -388,6 +439,11 @@ p, a, button, .gift-info, .timeline p {
   position: relative;
   margin-bottom: 60px;
   padding-left: 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.event {
+  opacity: 0; /* Mulai tersembunyi */
 }
 
 .timeline .event::before {
@@ -420,7 +476,7 @@ p, a, button, .gift-info, .timeline p {
 #audio-toggle {
   position: fixed;
   bottom: 60px;
-  right: 30px;
+  right: 65px;
   background-color: var(--coklat-muda);
   color: white;
   border: none;
@@ -453,7 +509,8 @@ p, a, button, .gift-info, .timeline p {
   position: relative;
   text-align: center;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 180px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .gift-card:hover {
@@ -473,10 +530,19 @@ p, a, button, .gift-info, .timeline p {
   margin-bottom: 8px;
 }
 
+.logo-kado {
+  width: 60px;      /* lebih kecil agar tidak mendominasi */
+  height: auto;
+  margin-bottom: 8px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
 .gift-info {
   margin-bottom: 8px; /* Jarak antara nama dan info rekening */
   flex: 1;
   padding-right: 8px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .gift-info p {
@@ -518,20 +584,23 @@ p, a, button, .gift-info, .timeline p {
 .gift-button {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px 18px;
-  background-color: #6d4c41;
+  padding: 10px 20px;
+  background-color: var(--coklat-muda);
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 8px;
   font-size: 0.95rem;
-  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s ease;
   letter-spacing: 0.3px;
 }
 
 .gift-button:hover {
   background-color: #5d4037;
   transform: scale(1.05);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .toast {
@@ -561,22 +630,27 @@ p, a, button, .gift-info, .timeline p {
 .maps-button {
   display: inline-block;
   margin-top: 15px;
-  padding: 10px 18px;
+  padding: 10px 20px;
   background-color: var(--coklat-muda);
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 8px;
-  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s ease;
 }
 
 .maps-button:hover {
-  background-color: #5d4037;
+  transform: scale(1.05);
+  background-color: var(--coklat-tua);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 /* === Footer === */
 footer {
-  padding: 20px 20px;
+  padding: 30px 20px;
+  margin-top: 40px;
   text-align: center;
   background-color: var(--coklat-muda);
   color: white;
@@ -640,6 +714,7 @@ img {
 
 button:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 button {
@@ -655,8 +730,8 @@ button {
 
   #audio-toggle {
     bottom: 60px;
-    right: 3 30px;
-    font-size: 1 rem;
+    right: 30px;
+    font-size: 1rem;
     padding: 10px 14px;
   }
 
@@ -684,6 +759,7 @@ button {
     padding: 16px 14px;
     flex-direction: column;
     text-align: center;
+    min-height: 180px;
   }
 
   .quote {
@@ -695,11 +771,13 @@ button {
   .mempelai-item h3 {
     font-size: 1.15rem;
     margin-top: 6px;
+    margin-bottom: 4px; /* Tambahkan baris ini */
   }
 
   .mempelai-item p {
     font-size: 0.95rem;
     margin-top: 0;
+    margin-bottom: 8px; /* Agar tidak terlalu menempel dengan elemen lain */
     color: #5d4037;
   }
 
@@ -729,8 +807,35 @@ button {
   .gift-button,
   .maps-button,
   .rsvp-button {
-    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--coklat-muda);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
   }
+}
+
+#audio-toggle::after {
+  content: attr(aria-label); /* label tooltip */
+  position: absolute;
+  top: -36px;
+  right: 50%;
+  transform: translateX(50%);
+  font-size: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+#audio-toggle:hover::after {
+  opacity: 1;
 }
